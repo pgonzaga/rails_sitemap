@@ -7,8 +7,8 @@ require "rails_sitemap/version"
 Gem::Specification.new do |s|
   s.name        = "rails_sitemap"
   s.version     = RailsSitemap::VERSION
-  s.authors     = [""]
-  s.email       = [""]
+  s.authors     = ["Pablo Gonzaga"]
+  s.email       = ["pgonzaga.uy@gmail.com"]
   s.homepage    = "https://github.com/pgonzaga2012/rails_sitemap"
   s.summary     = "Summary of RailsSitemap."
   s.description = "Description of RailsSitemap."
