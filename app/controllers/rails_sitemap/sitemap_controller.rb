@@ -36,8 +36,8 @@ module RailsSitemap
         EXCLUDED_PATHS.include?(route[:path])
       end
 
-      @routes = @routes.map do|route|
-        route[:path][0..-11]
+      @sitemap_entries = @routes.map do|route|
+        SitemapEntry.new(route[:path][0..-11])
       end
     end
 
@@ -54,11 +54,17 @@ module RailsSitemap
 
         model_class.all.each do |object|
           id = object.try(:slug) || object.id
-          @routes << "/#{model_sitemap.pluralize.downcase}/#{id}"
+
+          object_path = "/#{model_sitemap.pluralize.downcase}/#{id}"
+          last_modification = object.updated_at.to_datetime.to_s
+          object_priority = RailsSitemap.priority
+
+          @sitemap_entries <<
+            SitemapEntry.new(object_path, object_priority, last_modification)
         end
       end
 
-      @routes.uniq
+      @sitemap_entries.uniq
     end
   end
 end
