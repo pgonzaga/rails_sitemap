@@ -55,7 +55,7 @@ module RailsSitemap
         model_class.all.each do |object|
           id = object.try(:slug) || object.id
 
-          object_path = "/#{model_sitemap.pluralize.downcase}/#{id}"
+          object_path = "/#{model_sitemap.underscore.pluralize}/#{id}"
           last_modification = object.updated_at.to_datetime.to_s
           object_priority = RailsSitemap.priority
 
