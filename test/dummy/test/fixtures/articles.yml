@@ -1,0 +1,7 @@
+one:
+  name: MyFirstArticle
+  slug: my-first-article
+
+two:
+  name: MySecondArticle
+  slug: my-second-article
