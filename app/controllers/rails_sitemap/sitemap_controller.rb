@@ -1,11 +1,12 @@
 module RailsSitemap
   class SitemapController < ApplicationController
+    include RailsSitemap::ActAsSitemap
+
     EXCLUDED_CONTROLLERS = ['rails/info', nil, 'errors', 'rails/mailers']
     EXCLUDED_ACTIONS = %w(show destroy update edit new create)
     EXCLUDED_PATHS = %w(/)
 
     before_action :set_routes, only: :index
-    before_action :set_current_domain, only: :index
     before_action :set_custom_paths, only: :index
 
     def index
@@ -39,13 +40,6 @@ module RailsSitemap
       @sitemap_entries = @routes.map do|route|
         SitemapEntry.new(route[:path][0..-11])
       end
-    end
-
-    def set_current_domain
-      uri = URI.parse(request.original_url)
-      pre_html = uri.html_safe? ? 'https://' : 'http://'
-
-      @current_domain = pre_html + uri.hostname
     end
 
     def set_custom_paths
