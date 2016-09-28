@@ -6,6 +6,8 @@ module RailsSitemap
       Rails.application.routes.append do
         mount RailsSitemap::Engine => '/'
       end
+
+      Mime::Type.register 'text/kml', :kml
     end
   end
 
@@ -14,13 +16,15 @@ module RailsSitemap
                    :updated_at,
                    :priority,
                    :update_frequency_for_app,
-                   :update_frequency_for_models
+                   :update_frequency_for_models,
+                   :locations
 
     self.models_for_sitemap = []
     self.updated_at = DateTime.now.to_s
     self.priority = 0.5
     self.update_frequency_for_app = 'always'
     self.update_frequency_for_models = 'weekly'
+    self.locations = []
   end
 
   def self.setup(&block)
