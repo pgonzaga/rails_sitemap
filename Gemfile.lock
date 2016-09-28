@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    rails_sitemap (0.2.2)
+    rails_sitemap (0.2.3)
+      rails
 
 GEM
   remote: https://rubygems.org/

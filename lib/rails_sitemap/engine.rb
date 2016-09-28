@@ -7,7 +7,7 @@ module RailsSitemap
         mount RailsSitemap::Engine => '/'
       end
 
-      Mime::Type.register 'text/kml', :kml
+      Mime::Type.register 'text/xml', :kml
     end
   end
 
