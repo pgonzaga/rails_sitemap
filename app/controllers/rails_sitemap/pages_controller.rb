@@ -1,5 +1,5 @@
 module RailsSitemap
-  class SitemapController < ApplicationController
+  class PagesController < ApplicationController
     include RailsSitemap::ActAsSitemap
 
     EXCLUDED_CONTROLLERS = ['rails/info', nil, 'errors', 'rails/mailers']
