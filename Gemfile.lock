@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_sitemap (0.2.5)
+    rails_sitemap (0.3.0)
       rails
 
 GEM

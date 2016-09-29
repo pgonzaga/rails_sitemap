@@ -17,7 +17,8 @@ module RailsSitemap
                    :priority,
                    :update_frequency_for_app,
                    :update_frequency_for_models,
-                   :locations
+                   :locations,
+                   :hd_images
 
     self.models_for_sitemap = []
     self.updated_at = DateTime.now.to_s
@@ -25,6 +26,7 @@ module RailsSitemap
     self.update_frequency_for_app = 'always'
     self.update_frequency_for_models = 'weekly'
     self.locations = []
+    self.hd_images = []
   end
 
   def self.setup(&block)
