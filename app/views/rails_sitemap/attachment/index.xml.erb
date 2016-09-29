@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<%@image_entries.each do |image_entry|%>
-  <url>
-    <%if image_entry.coordinates%>
-      <loc><%=image_entry.coordinates%></loc>
-    <%end%>
-    <lastmod><%=image_entry.updated_at %></lastmod>
-    <image:image>
-      <image:loc><%=@current_domain  + image_entry.path %></image:loc>
-      <%if image_entry.title%>
-        <image:title><%=image_entry.title %></image:title>
+  <%@image_entries.each do |image_entry|%>
+    <url>
+      <%if image_entry.coordinates%>
+        <loc><%=image_entry.coordinates%></loc>
       <%end%>
-    </image:image>
-  </url>
-<%end%>
+      <lastmod><%=image_entry.updated_at %></lastmod>
+      <image:image>
+        <image:loc><%=@current_domain  + image_entry.path %></image:loc>
+        <%if image_entry.title%>
+          <image:title><%=image_entry.title %></image:title>
+        <%end%>
+      </image:image>
+    </url>
+  <%end%>
+</urlset>
