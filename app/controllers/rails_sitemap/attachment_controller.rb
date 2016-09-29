@@ -13,13 +13,9 @@ module RailsSitemap
     private
 
     def set_images
-      asset_images = Dir["#{Rails.root}/app/assets/images/*.{jpg,png,gif,svg}"]
-
-      @image_entries = asset_images.map do |asset_image|
-        image_name = asset_image.split('/').last
-        image_path = ActionController::Base.helpers.asset_path(image_name)
-
-        ImageEntry.new(image_path, @current_domain)
+      @image_entries = RailsSitemap.hd_images.map do |hd_image|
+        image_path = ActionController::Base.helpers.asset_path(hd_image[:name])
+        ImageEntry.new(image_path, hd_image[:title], hd_image[:coordinates])
       end
     end
   end

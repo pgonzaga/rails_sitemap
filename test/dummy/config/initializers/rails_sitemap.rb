@@ -11,4 +11,12 @@ RailsSitemap.setup do |config|
       coordinates: '-56.19006872177124,-34.907047903278404,0'
     }
   ]
+
+  config.hd_images = [
+    {
+      name: 'mario.png',
+      title: 'A super fancy mario image',
+      coordinates: '12.417700299999979,45.4930475,0'
+    }
+  ]
 end
