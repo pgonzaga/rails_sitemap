@@ -79,3 +79,11 @@ RailsSitemap.setup do |config|
   config.update_frequency_for_models = 'weekly'
 end
 ```
+
+To define custom excluded paths
+
+```ruby
+RailsSitemap.setup do |config|
+  config.excluded_paths = %w(/email_captures /drip-submission /thank-you)
+end
+```

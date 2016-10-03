@@ -37,6 +37,10 @@ module RailsSitemap
         EXCLUDED_PATHS.include?(route[:path])
       end
 
+      @routes.reject! do |route|
+        RailsSitemap.excluded_paths.include?(route[:path])
+      end
+
       @sitemap_entries = @routes.map do|route|
         SitemapEntry.new(route[:path][0..-11])
       end
