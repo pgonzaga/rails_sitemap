@@ -14,8 +14,8 @@ module RailsSitemap
 
     def set_images
       @image_entries = RailsSitemap.hd_images.map do |hd_image|
-        image_path = ActionController::Base.helpers.asset_path(hd_image[:name])
-        ImageEntry.new(image_path, hd_image[:title], hd_image[:coordinates])
+        image_url = ActionController::Base.helpers.asset_url(hd_image[:name])
+        ImageEntry.new(image_url, hd_image[:title], hd_image[:coordinates])
       end
     end
   end
