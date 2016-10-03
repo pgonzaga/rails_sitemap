@@ -19,4 +19,6 @@ RailsSitemap.setup do |config|
       coordinates: '12.417700299999979,45.4930475,0'
     }
   ]
+
+  config.excluded_paths = ['/fakes(.:format)']
 end
