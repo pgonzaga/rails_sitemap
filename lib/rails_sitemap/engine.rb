@@ -19,7 +19,8 @@ module RailsSitemap
                    :update_frequency_for_models,
                    :locations,
                    :hd_images,
-                   :excluded_paths
+                   :excluded_paths,
+                   :domain
 
     self.models_for_sitemap = []
     self.updated_at = DateTime.now.to_s
@@ -29,6 +30,7 @@ module RailsSitemap
     self.locations = []
     self.hd_images = []
     self.excluded_paths = []
+    self.domain = nil
   end
 
   def self.setup(&block)
