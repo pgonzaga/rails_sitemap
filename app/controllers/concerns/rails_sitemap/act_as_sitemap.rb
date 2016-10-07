@@ -8,8 +8,8 @@ module RailsSitemap
       protected
 
       def set_current_domain
-        uri = URI.parse(request.original_url)
-        pre_html = uri.html_safe? ? 'https://' : 'http://'
+        uri = URI.parse(RailsSitemap.domain || request.original_url)
+        pre_html = uri.to_s.include?('https://') ? 'https://' : 'http://'
 
         @current_domain = pre_html + uri.hostname
       end

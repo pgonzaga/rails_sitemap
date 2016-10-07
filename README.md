@@ -87,3 +87,11 @@ RailsSitemap.setup do |config|
   config.excluded_paths = %w(/email_captures /drip-submission /thank-you)
 end
 ```
+
+To define custom domain
+
+```ruby
+RailsSitemap.setup do |config|
+  config.domain = 'http://www.example.com/'
+end
+```

@@ -21,4 +21,5 @@ RailsSitemap.setup do |config|
   ]
 
   config.excluded_paths = ['/fakes(.:format)']
+  config.domain = 'http://www.example.com/'
 end
