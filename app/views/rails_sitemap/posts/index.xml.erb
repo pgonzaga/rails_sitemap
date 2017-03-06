@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+  <url>
+    <loc><%= @current_domain %></loc>
+    <lastmod><%= RailsSitemap.updated_at %></lastmod>
+    <changefreq><%= RailsSitemap.update_frequency_for_app %></changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <% @posts.each do |post| %>
+    <url>
+      <loc><%= post[:url] %></loc>
+      <lastmod><%= RailsSitemap.updated_at%></lastmod>
+    </url>
+  <% end %>
+</urlset>

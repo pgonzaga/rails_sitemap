@@ -8,7 +8,7 @@ Add the gem in your Gemfile
 gem 'rails_sitemap'
 ```
 
-It will generate an index sitemap. This sitemap will have a reference to geo-sitemap, attachment-sitemap and location sitemap
+It will generate an index sitemap. This sitemap will have a reference to geo-sitemap, attachment-sitemap, location sitemap and post-sitemap
 
 ```xml
 <sitemapindex
@@ -23,6 +23,10 @@ It will generate an index sitemap. This sitemap will have a reference to geo-sit
   </sitemap>
   <sitemap>
     <loc>http://www.example.com/geo-sitemap.xml</loc>
+    <lastmod>2016-09-28T19:02:56+00:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>http://www.example.com/post-sitemap.xml</loc>
     <lastmod>2016-09-28T19:02:56+00:00</lastmod>
   </sitemap>
 ```
@@ -66,6 +70,18 @@ RailsSitemap.setup do |config|
       name: 'mario.png',
       title: 'A super fancy mario image',
       coordinates: '12.417700299999979,45.4930475,0'
+    }
+  ]
+end
+```
+
+To define posts to be exposed on post-sitemap
+
+```ruby
+RailsSitemap.setup do |config|
+  config.post = [
+    {
+      url: 'http://blog.neonroots.com/category/philosophy/example.html'
     }
   ]
 end
