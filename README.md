@@ -87,6 +87,14 @@ RailsSitemap.setup do |config|
 end
 ```
 
+To add custom sitemaps
+
+```ruby
+RailsSitemap.setup do |config|
+  config.custom_endpoints = ['https://neonroots.com/blog/sitemap_index.xml']
+end
+```
+
 To customize the update frequency
 
 ```ruby
