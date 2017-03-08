@@ -20,6 +20,12 @@ RailsSitemap.setup do |config|
     }
   ]
 
+  config.posts =[
+    {
+      url: 'http://blog.neonroots.com/category/technology/test.html'
+    }
+  ]
+
   config.excluded_paths = ['/fakes(.:format)']
   config.domain = 'http://www.example.com/'
 end
