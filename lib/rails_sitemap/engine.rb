@@ -21,7 +21,8 @@ module RailsSitemap
                    :hd_images,
                    :excluded_paths,
                    :domain,
-                   :posts
+                   :posts,
+                   :custom_endpoints
 
     self.models_for_sitemap = []
     self.updated_at = DateTime.now.to_s
@@ -33,6 +34,7 @@ module RailsSitemap
     self.excluded_paths = []
     self.domain = nil
     self.posts = []
+    self.custom_endpoints = []
   end
 
   def self.setup(&block)

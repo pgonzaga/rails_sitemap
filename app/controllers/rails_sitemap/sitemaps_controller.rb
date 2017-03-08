@@ -12,12 +12,15 @@ module RailsSitemap
     private
 
     def set_sitemaps
-      @sitemap_endpoints = %w(
+      standar_endpoints = %w(
         pages-sitemap
         attachment-sitemap
         geo-sitemap
         post-sitemap
       )
+
+      custom_endpoints = RailsSitemap.custom_endpoints || []
+      @sitemap_endpoints = standar_endpoints + custom_endpoints
     end
   end
 end
