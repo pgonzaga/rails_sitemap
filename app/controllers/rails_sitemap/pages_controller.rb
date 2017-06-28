@@ -17,32 +17,48 @@ module RailsSitemap
 
     private
 
+    def excluded_path?(path)
+      return true if path.empty? || EXCLUDED_PATHS.include?(path)
+
+      RailsSitemap.excluded_paths.include?(path)
+    end
+
+    def excluded_wildcards
+      RailsSitemap.excluded_paths.select { |path| path.ends_with?('/*') }
+    end
+
+    def filter_wildcards(routes)
+      wildcards = excluded_wildcards.map(&:chop)
+
+      routes.reject do |route|
+        wildcards.any? { |wildcard| route.starts_with?(wildcard) }
+      end
+    end
+
+    def transform_route(route)
+      defaults = route.defaults
+
+      return if EXCLUDED_CONTROLLERS.include?(defaults[:controller])
+      return if EXCLUDED_ACTIONS.include?(defaults[:action])
+
+      path = route.format({})
+      return if excluded_path?(path)
+
+      path
+    end
+
     def set_routes
-      @routes = Rails.application.routes.routes.map do |route|
-        { alias: route.name,
-          path: route.path.spec.to_s,
-          controller: route.defaults[:controller],
-          action: route.defaults[:action] }
-      end
+      routes = Rails.application.routes.routes.map do |route|
+        transform_route(route)
+      end.compact
 
-      @routes.reject! do |route|
-        EXCLUDED_CONTROLLERS.include?(route[:controller])
-      end
+      routes = filter_wildcards(routes)
 
-      @routes.reject! do |route|
-        EXCLUDED_ACTIONS.include?(route[:action])
-      end
+      object_priority = RailsSitemap.priority
+      last_modification = RailsSitemap.updated_at
 
-      @routes.reject! do |route|
-        EXCLUDED_PATHS.include?(route[:path])
-      end
-
-      @routes.reject! do |route|
-        RailsSitemap.excluded_paths.include?(route[:path])
-      end
-
-      @sitemap_entries = @routes.map do|route|
-        SitemapEntry.new(route[:path][0..-11])
+      @sitemap_entries = routes.map do|route|
+        SitemapEntry.new(route, object_priority, last_modification)
       end
     end
 

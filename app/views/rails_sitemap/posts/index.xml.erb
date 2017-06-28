@@ -10,7 +10,7 @@
   <% @posts.each do |post| %>
     <url>
       <loc><%= post[:url] %></loc>
-      <lastmod><%= RailsSitemap.updated_at%></lastmod>
+      <lastmod><%= RailsSitemap.updated_at %></lastmod>
     </url>
   <% end %>
 </urlset>
