@@ -10,9 +10,9 @@
   <% @sitemap_entries.each do |sitemap_entry| %>
     <url>
       <loc><%= @current_domain + sitemap_entry.path %></loc>
-      <lastmod><%= sitemap_entry.updated_at%></lastmod>
-      <changefreq><%=RailsSitemap.update_frequency_for_models%></changefreq>
-      <priority><%= sitemap_entry.priority%></priority>
+      <lastmod><%= sitemap_entry.updated_at %></lastmod>
+      <changefreq><%= RailsSitemap.update_frequency_for_models %></changefreq>
+      <priority><%= sitemap_entry.priority %></priority>
     </url>
   <% end %>
 </urlset>

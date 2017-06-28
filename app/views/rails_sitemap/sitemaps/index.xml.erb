@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <%@sitemap_endpoints.each do |sitemap_endpoint|%>
+  <% @sitemap_endpoints.each do |sitemap_endpoint| %>
     <sitemap>
-      <loc><%="#{@current_domain}/#{sitemap_endpoint}.xml"%></loc>
-      <lastmod><%=RailsSitemap.updated_at%></lastmod>
+      <loc><%="#{@current_domain}/#{sitemap_endpoint}" %>.xml</loc>
+      <lastmod><%= RailsSitemap.updated_at %></lastmod>
     </sitemap>
-  <%end%>
+  <% end %>
 </sitemapindex>
